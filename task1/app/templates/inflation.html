@@ -1,0 +1,75 @@
+<!DOCTYPE html>{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Инфляция в России</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      td.col14 {background: gray;}
+    </style>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="row">
+        <h1 class="col s12">Инфляция в России</h1>
+        <div class="col s12 m8">
+
+        <!-- Ваша логика -->
+        <table class="u-full-width" border="3">
+          <thead>
+            <tr>
+              {% for key in head %}
+                {% if key == 'Суммарная'%}
+                  <th bgcolor="#808080">
+                    {{key}}
+                  </th>
+                {% else %}
+                  <th>
+                    {{key}}
+                  </th>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in info_list %}
+              <tr>
+              {% for key, value in item.items %}
+                {% if key == 'Год' %}
+                  <td>{{ value }}</td>
+                {% elif key == 'Суммарная'%}
+                  <td bgcolor="#808080">{{value}}</td>
+                {% else %}
+                  {% if value == 0.0 %}
+                    <td> --- </td>
+                  {% elif value < 0 %}
+                    <td bgcolor="#008000">{{value}}</td>
+                  {% elif value > 5 %}
+                    <td bgcolor="#FF0000">{{value}}</td>
+                  {% elif value > 2 %}
+                    <td bgcolor="#DC143C">{{value}}</td>
+                  {% elif value > 1 %}
+                    <td bgcolor="#FA8072">{{value}}</td>
+                  {% else %}
+                    <td>{{ value }}</td>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        </div>
+      </div>
+    {% endblock %}
+
+  </body>
+</html>
