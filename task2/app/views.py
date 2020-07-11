@@ -19,23 +19,6 @@ def contacts_view(request):
 
 def examples_view(request):
     template_name = 'app/examples.html'
-
-    # items = [{
-    #     'title': 'Apple II',
-    #     'text': 'Легенда',
-    #     'img': 'ii.jpg'
-    # }, {
-    #     'title': 'Macintosh',
-    #     'text': 'Свежие новинки октября 1983-го',
-    #     'img': 'mac.jpg'
-    # }, {
-    #     'title': 'iMac',
-    #     'text': 'Оригинальный и прозрачный',
-    #     'img': 'imac.jpg'
-    # }]
-    # context = {
-    #     'items': items
-    # }
     path = '/home/dell-ubuntu/Рабочий стол/Disk D/dj/Динамическое формирование страниц/task2/app/templates/app/Comps'
     list_comp = os.listdir(path)
     list_html_comp = []
